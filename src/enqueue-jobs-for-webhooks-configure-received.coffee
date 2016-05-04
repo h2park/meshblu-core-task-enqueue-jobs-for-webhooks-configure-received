@@ -1,5 +1,3 @@
-_              = require 'lodash'
-async          = require 'async'
 http           = require 'http'
 WebhookManager = require 'meshblu-core-manager-webhook'
 
@@ -24,6 +22,7 @@ class EnqueueJobsForWebhooksConfigureReceived
     @webhookManager.enqueueForReceived {
       uuid: request.metadata.auth.uuid
       route: request.metadata.route
+      forwardedRoutes: request.metadata.forwardedRoutes
       rawData: request.rawData
       type: 'configure.received'
     }, (error) =>
